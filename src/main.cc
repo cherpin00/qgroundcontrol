@@ -223,8 +223,24 @@ bool checkAndroidWritePermission() {
  * @return exit code, 0 for normal exit and !=0 for error cases
  */
 
+class MyClass : public QObject
+{
+    Q_OBJECT
+public:
+    Q_INVOKABLE void cppMethod(const QString &msg) {
+        qDebug() << "Called the C++ method with" << msg;
+    }
+
+public slots:
+    void cppSlot(int number) {
+        qDebug() << "Called the C++ slot with" << number;
+    }
+};
+
 int main(int argc, char *argv[])
 {
+
+
 #ifndef __mobile__
     RunGuard guard("QGroundControlRunGuardKey");
     if (!guard.tryToRun()) {

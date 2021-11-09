@@ -186,6 +186,21 @@ Item {
                     }
                 }
 
+                Rectangle {
+                    id: tutRect
+                    property bool isClicked: false
+                    Layout.fillHeight: true
+                    width: height
+                    color: isClicked ? "green" : "red"
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            tutRect.isClicked = !tutRect.isClicked
+                        }
+                    }
+                }
+
                 Item {
                     Layout.fillHeight:  true
                     width:              ScreenTools.defaultFontPixelWidth / 2

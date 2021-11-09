@@ -607,6 +607,12 @@ Item {
                     buttonVisible:      _isMissionLayer
                 },
                 {
+                    name:               qsTr("OpenBox"),
+                    iconSource:         "/res/takeoff.svg",
+                    buttonEnabled:      _missionController.isInsertTakeoffValid,
+                    buttonVisible:      true,
+                },
+                {
                     name:               _editingLayer == _layerRallyPoints ? qsTr("Rally Point") : qsTr("Waypoint"),
                     iconSource:         "/qmlimages/MapAddMission.svg",
                     buttonEnabled:      _isRallyLayer ? true : _missionController.flyThroughCommandsAllowed,
