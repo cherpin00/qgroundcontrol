@@ -21,6 +21,9 @@ add_library(Vehicle
 	VehicleObjectAvoidance.cc
 	VehicleObjectAvoidance.h
 
+        BoxController.cc
+        BoxController.h
+
 	${EXTRA_SRC}
 )
 

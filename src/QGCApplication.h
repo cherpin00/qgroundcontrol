@@ -26,6 +26,8 @@
 #include "FactSystem.h"
 #include "GPSRTKFactGroup.h"
 
+#include "BoxController.h"
+
 #ifdef QGC_RTLAB_ENABLED
 #include "OpalLink.h"
 #endif

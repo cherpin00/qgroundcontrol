@@ -24,6 +24,9 @@
 #include "AppSettings.h"
 #include "AirspaceManager.h"
 #include "ADSBVehicleManager.h"
+
+#include "BoxController.h"
+
 #if defined(QGC_ENABLE_PAIRING)
 #include "PairingManager.h"
 #endif
@@ -62,6 +65,9 @@ public:
     Q_ENUM(AltitudeMode)
 
     Q_PROPERTY(QString              appName             READ appName                CONSTANT)
+
+    // Added for box
+    Q_PROPERTY(BoxController*       boxController       READ boxController          CONSTANT)
 
     Q_PROPERTY(LinkManager*         linkManager         READ linkManager            CONSTANT)
     Q_PROPERTY(MultiVehicleManager* multiVehicleManager READ multiVehicleManager    CONSTANT)
@@ -171,6 +177,9 @@ public:
     // Property accesors
 
     QString                 appName             ()  { return qgcApp()->applicationName(); }
+
+    // added for box controller
+    BoxController*          boxController       ()  { return _boxController; };
     LinkManager*            linkManager         ()  { return _linkManager; }
     MultiVehicleManager*    multiVehicleManager ()  { return _multiVehicleManager; }
     QGCMapEngineManager*    mapEngineManager    ()  { return _mapEngineManager; }
@@ -266,6 +275,9 @@ signals:
 private:
     double                  _flightMapInitialZoom   = 17.0;
     LinkManager*            _linkManager            = nullptr;
+    // added box controller
+    BoxController*          _boxController          = nullptr;
+
     MultiVehicleManager*    _multiVehicleManager    = nullptr;
     QGCMapEngineManager*    _mapEngineManager       = nullptr;
     QGCPositionManager*     _qgcPositionManager     = nullptr;
@@ -280,6 +292,7 @@ private:
     TaisyncManager*         _taisyncManager         = nullptr;
     MicrohardManager*       _microhardManager       = nullptr;
     ADSBVehicleManager*     _adsbVehicleManager     = nullptr;
+
 #if defined(QGC_ENABLE_PAIRING)
     PairingManager*         _pairingManager         = nullptr;
 #endif

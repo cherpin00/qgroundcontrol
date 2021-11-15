@@ -37,6 +37,14 @@ Item {
         visible:        qgcPal.globalTheme === QGCPalette.Light
     }
 
+    Rectangle {
+        anchors.left:   parent.left
+        anchors.right:  parent.right
+        anchors.bottom: parent.bottom
+        height:         1
+        color:          "white"
+        visible:        qgcPal.globalTheme === QGCPalette.Light
+    }
 
     //-- Setup can be invoked from c++ side
     Connections {
@@ -121,6 +129,19 @@ Item {
                         buttonRow.clearAllChecks()
                         checked = true
                         mainWindow.showPlanView()
+                    }
+                }
+
+                QGCToolBarButton {
+                    id:                 boxButton
+                    Layout.fillHeight:  true
+                    color: "blue"
+                    onClicked: {
+                        if (mainWindow.preventViewSwitch()) {
+                            return
+                        }
+                        buttonRow.clearAllChecks()
+                        checked = true
                     }
                 }
 
